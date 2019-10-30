@@ -4,7 +4,7 @@ public class ExtractAndSumFromString {
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-     int a = getSumNumbers("abc 4 test 5 notext 5 ttt  6");
+     int a = getSumNumbers("abc 4 test 5 notext 5 ttt  6 new branch 4 test merge");
      
      System.out.println(a);
 	}
