@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+<beans  
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns="http://www.springframework.org/schema/beans"  
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:aop="http://www.springframework.org/schema/aop"  
+    xmlns:p="http://www.springframework.org/schema/p"  
+    xsi:schemaLocation="http://www.springframework.org/schema/beans  
+               http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+               http://www.springframework.org/schema/context 
+               http://www.springframework.org/schema/context/spring-context-3.0.xsd
+               http://www.springframework.org/schema/aop
+               http://www.springframework.org/schema/aop/spring-aop-3.0.xsd ">
+   <context:annotation-config/>
+<bean id = "addr" class = "com.springc.Address">
+<property name = "doorno" value = "23"/>
+<property name="colony" value = "brindhavan colony"/>
+<property name="state" value = "Hyderabad"/>
+</bean>
+
+<bean id = "teacher1" class = "com.springc.Teacher">
+<property name="id" value = "1"/>
+<property name="tname" value = "papanna"></property>
+</bean>
+
+<bean id = "teacher2" class = "com.springc.Teacher">
+<property name="id" value = "2"/>
+<property name="tname" value = "prbhakar"></property>
+</bean>
+<bean id = "teacher3" class = "com.springc.Teacher">
+<property name="id" value = "3"/>
+<property name="tname" value = "dddd"></property>
+</bean>
+
+<bean id = "subject1" class = "com.springc.Subjects">
+<property name="sname" value = "english"/>
+<property name="author" value = "aaa"/>
+</bean>
+
+<bean id = "subject2" class = "com.springc.Subjects">
+<property name="sname" value = "social"/>
+<property name="author" value = "bbb"/>
+</bean>
+
+<bean id = "subject3" class = "com.springc.SubInherit" parent="subject2">
+<property name="addfld" value = "economics"/>
+</bean>
+
+<bean id = "springcr" class = "com.springc.Student">
+<property name="address">
+<ref bean ="addr"/>
+</property>
+<property name="subjects">
+<list>
+<value>1. java</value>
+<value>2 . j2ee</value>
+<value>3. Spring</value>
+<value>4. cloud</value>
+</list>
+</property>
+<property name="submarks">
+<map>
+<entry key = "Maths" value = "50"/>
+<entry key = "science" value = "49"/>
+<entry key = "social" value = "48"/>
+<entry key = "english" value = "45"/>
+</map>
+</property>
+
+<property name="teachsub">
+<map>
+<entry key-ref = "teacher1" value-ref="subject1"/>
+<entry key-ref="teacher2" value-ref="subject2"/> 
+</map>
+</property>
+
+<property name="teachsubinherit">
+<map>
+<entry key-ref="teacher3" value-ref="subject3"></entry>
+</map>
+</property>
+</bean>
+
+<bean id = "employee" class = "com.springc.Employee">
+<property name="ename" value = "changesetmanju"></property>
+<property name="salary" value = "200000"></property>
+<property name="desg" value = "changedev"></property>
+</bean>
+
+<bean id = "emp1" class="com.springc.Employee">
+<property name="ename" value = "aaaa"></property>
+<property name="salary" value = "50000"></property>
+<property name="desg" value = "ddddd"></property>
+</bean>
+
+<bean id = "empservice" class = "com.springc.EmployeeService"/>
+
+<bean id = "empserviceautoqualifier" class = "com.springc.EmployeeServiceConstructAutowird"></bean>
+<bean id = "b" class = "com.springc.B"/>
+<bean id = "a" class = "com.springc.A" autowire="byName"/>
+
+
+<bean id = "aa" class = "com.springc.factory.A" factory-method="getA"/>
+<bean id = "fp" class = "com.springc.factory.FactoryPrintable" factory-method="getPrintable"/>
+<bean id = "p" class = "com.springc.factory.FactoryPrintable"/>
+<bean id = "fnsp" class = "com.springc.factory.FactoryPrintable" factory-method="getNonsPrintable" factory-bean="p"/>
+</beans>  
